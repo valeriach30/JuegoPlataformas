@@ -11,7 +11,7 @@ public class ganarJuego : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.name == "Bola"){
-            Invoke("completarNivel", 2f);
+            Invoke("completarNivel", 0f);
         }
     }
 
