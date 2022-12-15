@@ -18,6 +18,13 @@ public class vidaJugador : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("trampa")){
+            reiniciar();
+        }
+    }
+
+
     private void reiniciar(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

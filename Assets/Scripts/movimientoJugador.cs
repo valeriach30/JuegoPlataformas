@@ -14,7 +14,7 @@ public class movimientoJugador : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask terrenoSaltable;
-    private enum estadoMov { IDLE, CORRIENDO, SALTANDO, CAYENDO }
+    
 
 
     // Start is called before the first frame update
@@ -35,33 +35,6 @@ public class movimientoJugador : MonoBehaviour
         if (Input.GetButtonDown("Jump") && enTerrreno()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-
-        actualizarAnimacion();
-    }
-
-    private void actualizarAnimacion() {
-
-        estadoMov estado;
-
-        if (dirX > 0f) {
-            estado = estadoMov.CORRIENDO;
-            sprite.flipX = false;
-        }
-        else if (dirX < 0f) {
-            estado = estadoMov.CORRIENDO;
-            sprite.flipX = true;
-        }
-        else {
-            estado = estadoMov.IDLE;
-        }
-
-        if (rb.velocity.y > .1f) {
-            estado = estadoMov.SALTANDO;
-        }
-        else if (rb.velocity.y < -.1f) {
-            estado = estadoMov.CAYENDO;
-        }
-        //animador.SetInteger("estado", (int) estado);
     }
 
     private bool enTerrreno() {
